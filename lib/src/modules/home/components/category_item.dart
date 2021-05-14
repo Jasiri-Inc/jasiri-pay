@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/constants.dart';
+import 'package:lipa_rahaa/src/constants/constants.dart';
 
 class CategoryItem extends StatelessWidget {
   final String title;

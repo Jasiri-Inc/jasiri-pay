@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/screens/home/components/category_item.dart';
+import 'package:lipa_rahaa/src/modules/home/components/category_item.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({

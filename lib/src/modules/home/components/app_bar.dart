@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lipa_rahaa/constants.dart';
+import 'package:lipa_rahaa/src/constants/constants.dart';
 
 AppBar homeAppBar(BuildContext context) {
   return AppBar(
