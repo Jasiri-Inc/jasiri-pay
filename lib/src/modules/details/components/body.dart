@@ -70,7 +70,7 @@ class ItemInfo extends StatelessWidget {
       children: <Widget>[
         Icon(
           Icons.location_on,
-          color: ksecondaryColor,
+          color: kSecondaryColor,
         ),
         SizedBox(width: 10),
         Text(name),
