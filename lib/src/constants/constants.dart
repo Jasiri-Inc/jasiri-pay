@@ -8,10 +8,17 @@ const kTextLightColor = Color(0xFF6A727D);
 
 
 
+// const kTextColor = Color(0xFF535353);
+// const kTextLightColor = Color(0xFFACACAC);
+const kDefaultPadding = 20.0;
+
+
+
 
 // const kSecondaryColor = Color(0xFF979797);
 // const kTextColor = Color(0xFF757575);
 // const kPrimaryColor = Color(0xFFFF7643);
+
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
@@ -41,6 +48,7 @@ const String kMatchPassError = "Passwords don't match";
 const String kNameNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
+
 
 final otpInputDecoration = InputDecoration(
   contentPadding:
