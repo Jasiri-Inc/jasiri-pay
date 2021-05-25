@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 
+
 class CategoryItem extends StatelessWidget {
   final String title;
   final bool isActive;
@@ -12,12 +13,15 @@ class CategoryItem extends StatelessWidget {
     this.press,
   }) : super(key: key);
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: press,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           children: <Widget>[
             Text(
