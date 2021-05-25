@@ -18,11 +18,11 @@ AppBar homeAppBar(BuildContext context) {
             .copyWith(fontWeight: FontWeight.bold),
         children: [
           TextSpan(
-            text: "Rahaa",
+            text: "b",
             style: TextStyle(color: kSecondaryColor),
           ),
           TextSpan(
-            text: "Pesa",
+            text: "Pay",
             style: TextStyle(color: kPrimaryColor),
           ),
         ],
