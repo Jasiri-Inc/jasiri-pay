@@ -1,0 +1,1 @@
+enum MenuState { home, moneybox, limit, profile }
