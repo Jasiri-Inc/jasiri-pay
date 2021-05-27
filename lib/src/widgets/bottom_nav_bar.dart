@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:lipa_rahaa/src/constants/enums.dart';
+import 'package:lipa_rahaa/src/modules/home/home-screen.dart';
+import 'package:lipa_rahaa/src/modules/profile/profile_screen.dart';
 
-class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({
+class CustomBottomNavigationBar extends StatefulWidget {
+  const CustomBottomNavigationBar({
     Key key,
+    @required this.selectedMenu,
   }) : super(key: key);
 
+  final MenuState selectedMenu;
+
+  @override
+  _CustomBottomNavigationBarState createState() =>
+      _CustomBottomNavigationBarState();
+}
+
+class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
+    final Color isActiveIconColor = Color(0xFFB6B6B6);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 35),
       height: 75,
@@ -27,26 +41,41 @@ class BottomNavBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(
-            icon: SvgPicture.asset("assets/icons/home.svg"),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: SvgPicture.asset("assets/icons/Following.svg"),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: SvgPicture.asset("assets/icons/Glyph.svg"),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: SvgPicture.asset("assets/icons/person.svg"),
-            onPressed: () {},
-          ),
-        ],
+      child: SafeArea(
+        top: false,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              // icon: SvgPicture.asset("assets/icons/Shop Icon.svg"),
+              icon: Icon(Icons.home),
+               
+            
+              color: MenuState.home == widget.selectedMenu
+                  ? kPrimaryColor
+                  : isActiveIconColor,
+              onPressed: () =>
+                  Navigator.pushNamed(context, HomeScreen.routeName),
+            ),
+            IconButton(
+              icon: SvgPicture.asset("assets/icons/Following.svg"),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: SvgPicture.asset("assets/icons/Glyph.svg"),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: SvgPicture.asset("assets/icons/User Icon.svg"),
+              // icon: Icon(Icons.home),
+              color: MenuState.profile == widget.selectedMenu
+                  ? kPrimaryColor
+                  : isActiveIconColor,
+              onPressed: () =>
+                  Navigator.pushNamed(context, ProfileScreen.routeName),
+            ),
+          ],
+        ),
       ),
     );
   }
