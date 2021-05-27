@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/constants/enums.dart';
 import 'package:lipa_rahaa/src/modules/home/home-screen.dart';
+import 'package:lipa_rahaa/src/modules/limit/limit_screen.dart';
+import 'package:lipa_rahaa/src/modules/moneybox/moneybox_screen.dart';
 import 'package:lipa_rahaa/src/modules/profile/profile_screen.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -47,32 +49,73 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              // icon: SvgPicture.asset("assets/icons/Shop Icon.svg"),
-              icon: Icon(Icons.home),
-               
-            
-              color: MenuState.home == widget.selectedMenu
-                  ? kPrimaryColor
-                  : isActiveIconColor,
+              icon: SvgPicture.asset(
+                "assets/icons/Shop Icon.svg",
+                color: MenuState.home == widget.selectedMenu
+                    ? kPrimaryColor
+                    : isActiveIconColor,
+              ),
               onPressed: () =>
-                  Navigator.pushNamed(context, HomeScreen.routeName),
+                  // Navigator.pushNamed(context, HomeScreen.routeName),
+                  Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => HomeScreen(),
+                  transitionDuration: Duration(seconds: 0),
+                ),
+              ),
             ),
             IconButton(
-              icon: SvgPicture.asset("assets/icons/Following.svg"),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: SvgPicture.asset("assets/icons/Glyph.svg"),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: SvgPicture.asset("assets/icons/User Icon.svg"),
-              // icon: Icon(Icons.home),
-              color: MenuState.profile == widget.selectedMenu
-                  ? kPrimaryColor
-                  : isActiveIconColor,
+              icon: SvgPicture.asset(
+                "assets/icons/heart-box.svg",
+                color: MenuState.moneybox == widget.selectedMenu
+                    ? kPrimaryColor
+                    : isActiveIconColor,
+              ),
               onPressed: () =>
-                  Navigator.pushNamed(context, ProfileScreen.routeName),
+                  // Navigator.pushNamed(context, MoneyBoxScreen.routeName),
+                  Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => MoneyBoxScreen(),
+                  transitionDuration: Duration(seconds: 0),
+                ),
+              ),
+            ),
+            IconButton(
+              icon: SvgPicture.asset(
+                "assets/icons/limit.svg",
+                color: MenuState.limit == widget.selectedMenu
+                    ? kPrimaryColor
+                    : isActiveIconColor,
+              ),
+              onPressed: () =>
+                  // Navigator.pushNamed(context, LimitScreen.routeName),
+                  Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => LimitScreen(),
+                  transitionDuration: Duration(seconds: 0),
+                ),
+              ),
+            ),
+            IconButton(
+              icon: SvgPicture.asset(
+                "assets/icons/User Icon.svg",
+                color: MenuState.profile == widget.selectedMenu
+                    ? kPrimaryColor
+                    : isActiveIconColor,
+              ),
+              onPressed: () =>
+                  // Navigator.pushNamed(context, ProfileScreen.routeName),
+
+                  Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, __, ___) => ProfileScreen(),
+                  transitionDuration: Duration(seconds: 0),
+                ),
+              ),
             ),
           ],
         ),
