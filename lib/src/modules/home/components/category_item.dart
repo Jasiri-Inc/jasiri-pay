@@ -2,30 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 
 
-class CategoryItem extends StatelessWidget {
+
+
+
+class CategoryItem extends StatefulWidget {
+ 
+ CategoryItem({Key key, this.title, this.press}) : super(key: key);
+  
   final String title;
-  final bool isActive;
   final Function press;
-  const CategoryItem({
-    Key key,
-    this.title,
-    this.isActive = false,
-    this.press,
-  }) : super(key: key);
+   
 
 
+  @override
+  _CategoryItemState createState() => _CategoryItemState();
+}
+
+class _CategoryItemState extends State<CategoryItem> {
+  
+  bool isActive = false;
+ 
+  
+  void onSelect (){
+    setState(() {
+     isActive = !isActive ;
+    });
+  }
 
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: press,
+      onTap: onSelect,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
           children: <Widget>[
             Text(
-              title,
+              widget.title,
               style: isActive
                   ? TextStyle(
                       color: kTextColor,
@@ -49,3 +63,7 @@ class CategoryItem extends StatelessWidget {
     );
   }
 }
+
+
+
+

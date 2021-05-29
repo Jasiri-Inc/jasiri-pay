@@ -18,7 +18,7 @@ class CategoryList extends StatelessWidget {
             itemBuilder: (BuildContext context, index) {
               return CategoryItem(
                 title: "CHSS Cafe 3",
-                isActive: true,
+                // isActive: true,
                 press: () {},
               );
             },),
