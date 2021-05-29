@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:lipa_rahaa/src/core/splash/splash_screen.dart';
 import 'package:lipa_rahaa/src/modules/home/home-screen.dart';
 import 'package:lipa_rahaa/src/config/routes/routes_config.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
           bodyText1: TextStyle(color: kSecondaryColor),
         ),
       ),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: SplashScreen(),
       routes: routes ,
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/modules/details/details-screen.dart';
+import 'package:lipa_rahaa/src/modules/details/details_screen.dart';
 import 'package:lipa_rahaa/src/modules/home/components/item_card.dart';
 
 class ItemList extends StatelessWidget {

@@ -52,8 +52,8 @@ class DiscountCard extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                           children: [
                             TextSpan(
-                              text: "Get Discount of \n",
-                              style: TextStyle(fontSize: 16),
+                              text: "Get Discount up to \n",
+                              style: TextStyle(fontSize: 18),
                             ),
                             TextSpan(
                               text: "30% \n",
@@ -64,8 +64,8 @@ class DiscountCard extends StatelessWidget {
                             ),
                             TextSpan(
                               text:
-                                  "at MacDonald's on your first order & Instant cashback",
-                              style: TextStyle(fontSize: 10),
+                                  "spend on meals cashless",
+                              style: TextStyle(fontSize: 15),
                             ),
                           ],
                         ),
