@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/core/splash/splash_screen.dart';
-import 'package:lipa_rahaa/src/modules/home/home-screen.dart';
 import 'package:lipa_rahaa/src/config/routes/routes_config.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,6 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Food App',
       theme: ThemeData(
+        fontFamily: 'Inter',
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
         textTheme: TextTheme(
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       // home: HomeScreen(),
       home: SplashScreen(),
-      routes: routes ,
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }
