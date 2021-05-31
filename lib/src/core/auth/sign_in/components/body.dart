@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
+import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/widgets/no_account_text.dart';
 import 'package:lipa_rahaa/src/widgets/social_card.dart';
 
@@ -21,13 +22,13 @@ class Body extends StatelessWidget {
                 Text(
                   "Welcome Back",
                   style: TextStyle(
-                    color: Colors.black,
+                    color: kSecondaryColor,
                     fontSize: getProportionateScreenWidth(28),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  "Sign in with your email and password  \nor continue with social media",
+                  "Sign in   \nor continue to visit us on social media",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
@@ -36,10 +37,6 @@ class Body extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SocialCard(
-                      icon: "assets/icons/google-icon.svg",
-                      press: () {},
-                    ),
                     SocialCard(
                       icon: "assets/icons/facebook-2.svg",
                       press: () {},
