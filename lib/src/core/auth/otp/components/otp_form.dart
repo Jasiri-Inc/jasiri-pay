@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:lipa_rahaa/src/modules/home/home-screen.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
+import 'package:lipa_rahaa/src/core/auth/sign_in/sign_in_screen.dart';
 
 class OtpForm extends StatefulWidget {
   const OtpForm({
@@ -108,7 +110,9 @@ class _OtpFormState extends State<OtpForm> {
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
             text: "Continue",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, HomeScreen.routeName);
+            },
           )
         ],
       ),
