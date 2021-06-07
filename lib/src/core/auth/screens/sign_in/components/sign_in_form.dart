@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/core/auth/screens/forgot_password/forgot_password_screen.dart';
-import 'package:lipa_rahaa/src/core/auth/screens/otp/otp_screen.dart';
+import '../../otp/otp_screen.dart';
 import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
 import 'package:lipa_rahaa/src/widgets/form_error.dart';
 import 'package:lipa_rahaa/src/widgets/helper/keyboard.dart';
+import 'package:provider/provider.dart';
+import '../../../models/user.dart';
+import '../../../repositories/user.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -15,9 +18,10 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
-  String password;
+
+  String email, password;
   bool remember = false;
+
   final List<String> errors = [];
 
   void addError({String error}) {
@@ -36,6 +40,24 @@ class _SignFormState extends State<SignForm> {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider auth = Provider.of<AuthProvider>(context);
+
+    var doLogin = () {
+      final Future<Map<String, dynamic>> responseMessage =
+          auth.login(email, password, 'iPhone');
+
+      responseMessage.then((response) {
+        if (response['status']) {
+          User user = response['user'];
+          Provider.of<UserProvider>(context, listen: false).setUser(user);
+          Navigator.pushNamed(context, OtpScreen.routeName);
+
+        }else{
+          print('Login Failed');
+        }
+      });
+    };
+
     return Form(
       key: _formKey,
       child: Column(
@@ -76,7 +98,8 @@ class _SignFormState extends State<SignForm> {
                 _formKey.currentState.save();
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, OtpScreen.routeName);
+                // Navigator.pushNamed(context, OtpScreen.routeName);
+                doLogin();
               }
             },
           ),

@@ -25,6 +25,6 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
-    );,);
+    ));
   }
 }

@@ -24,11 +24,12 @@ class AuthProvider with ChangeNotifier {
   Status get loggedInStatus => _loggedInStatus;
   Status get registeredInStatus => _registeredInStatus;
 
-  Future<Map<String, dynamic>> login(String email, String password, String deviceId) async {
+  Future<Map<String, dynamic>> login(
+      String email, String password, String deviceName) async {
     var result;
 
     final Map<String, dynamic> loginData = {
-      'user': {'email': email, 'password': password, 'device_id': deviceId}
+      'user': {'email': email, 'password': password, 'device_name': deviceName}
     };
 
     _loggedInStatus = Status.Authenticating;
@@ -40,6 +41,9 @@ class AuthProvider with ChangeNotifier {
       body: json.encode(loginData),
       headers: {'Content-Type': 'application/json'},
     );
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
@@ -116,5 +120,16 @@ class AuthProvider with ChangeNotifier {
   static onError(error) {
     print("the error is $error.detail");
     return {'status': false, 'message': 'Unsuccessful Request', 'data': error};
+  }
+}
+
+class UserProvider with ChangeNotifier {
+  User _user = new User();
+
+  User get user => _user;
+
+  void setUser(User user) {
+    _user = user;
+    notifyListeners();
   }
 }

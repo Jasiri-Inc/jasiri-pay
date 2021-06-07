@@ -30,21 +30,21 @@ class UserClass {
     this.name,
     this.email,
     this.token,
-    this.deviceId,
+    this.deviceName,
   });
 
   int id;
   String name;
   String email;
   String token;
-  String deviceId;
+  String deviceName;
 
   factory UserClass.fromJson(Map<String, dynamic> responseData) => UserClass(
         id: responseData["id"],
         name: responseData["name"],
         email: responseData["email"],
         token: responseData["token"],
-        deviceId: responseData["device_id"],
+        deviceName: responseData["device_name"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -52,6 +52,6 @@ class UserClass {
         "name": name,
         "email": email,
         "token": token,
-        "device_id": deviceId,
+        "device_id": deviceName,
       };
 }
