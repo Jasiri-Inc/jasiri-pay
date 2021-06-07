@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'category_item.dart';
+import './category_item.dart';
 
 class CategoryList extends StatelessWidget {
   CategoryList({
@@ -14,16 +13,15 @@ class CategoryList extends StatelessWidget {
       child: SizedBox(
         height: 70,
         child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 7,
-          itemBuilder: (BuildContext context, index) {
-            return CategoryItem(
-              title: "CHSS Cafe 3",
-              // isActive: true,
-              press: () {},
-            );
-          },
-        ),
+            scrollDirection: Axis.horizontal,
+            itemCount: 7,
+            itemBuilder: (BuildContext context, index) {
+              return CategoryItem(
+                title: "CHSS Cafe 3",
+                // isActive: true,
+                press: () {},
+              );
+            },),
       ),
     );
   }
