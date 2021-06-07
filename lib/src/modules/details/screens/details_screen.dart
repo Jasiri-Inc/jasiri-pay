@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/modules/details/components/app_bar.dart';
-import 'package:lipa_rahaa/src/modules/details/components/body.dart';
+
+import './components/app_bar.dart';
+import './components/body.dart';
 
 class DetailsScreen extends StatelessWidget {
   @override

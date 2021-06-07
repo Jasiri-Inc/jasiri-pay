@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/core/auth/sign_up/sign_up_screen.dart';
+import 'package:lipa_rahaa/src/core/auth/screens/sign_up/sign_up_screen.dart';
 
 class NoAccountText extends StatelessWidget {
   const NoAccountText({

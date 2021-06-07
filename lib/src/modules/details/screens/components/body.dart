@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/modules/details/components/item_image.dart';
-import 'package:lipa_rahaa/src/modules/details/components/order_button.dart';
-import 'package:lipa_rahaa/src/modules/details/components/title_price_rating.dart';
+import 'item_image.dart';
+import 'order_button.dart';
+import 'title_price_rating.dart';
 
 class Body extends StatelessWidget {
   @override

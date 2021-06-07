@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
+import 'package:lipa_rahaa/src/modules/home/screens/home-screen.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
 
 class Body extends StatelessWidget {
@@ -27,7 +28,7 @@ class Body extends StatelessWidget {
           child: DefaultButton(
             text: "Back to home",
             press: () {
-              // Navigator.pushNamed(context, HomeScreen.routeName);
+              Navigator.pushNamed(context, HomeScreen.routeName);
             },
           ),
         ),

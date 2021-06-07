@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/core/auth/forgot_password/forgot_password_screen.dart';
-import 'package:lipa_rahaa/src/core/auth/login_success/login_success_screen.dart';
+import 'package:lipa_rahaa/src/core/auth/screens/forgot_password/forgot_password_screen.dart';
+import 'package:lipa_rahaa/src/core/auth/screens/otp/otp_screen.dart';
 import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
 import 'package:lipa_rahaa/src/widgets/form_error.dart';
@@ -76,7 +76,7 @@ class _SignFormState extends State<SignForm> {
                 _formKey.currentState.save();
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                Navigator.pushNamed(context, OtpScreen.routeName);
               }
             },
           ),
@@ -110,10 +110,11 @@ class _SignFormState extends State<SignForm> {
       decoration: InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
       ),
     );
   }
@@ -143,10 +144,11 @@ class _SignFormState extends State<SignForm> {
       decoration: InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
       ),
     );
   }

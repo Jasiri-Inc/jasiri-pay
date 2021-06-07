@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/constants/enums.dart';
-import 'package:lipa_rahaa/src/modules/home/home-screen.dart';
-import 'package:lipa_rahaa/src/modules/limit/limit_screen.dart';
-import 'package:lipa_rahaa/src/modules/moneybox/moneybox_screen.dart';
+import 'package:lipa_rahaa/src/modules/home/screens/home-screen.dart';
+import 'package:lipa_rahaa/src/modules/limit/screens/limit_screen.dart';
+import 'package:lipa_rahaa/src/modules/moneybox/screens/moneybox_screen.dart';
 import 'package:lipa_rahaa/src/modules/profile/profile_screen.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {

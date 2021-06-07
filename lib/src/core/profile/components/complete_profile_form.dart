@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
 import 'package:lipa_rahaa/src/widgets/form_error.dart';
-import 'package:lipa_rahaa/src/core/auth/otp/otp_screen.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
 
