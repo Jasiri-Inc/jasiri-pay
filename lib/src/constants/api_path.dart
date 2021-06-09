@@ -9,10 +9,10 @@ class AppUrl {
 
 
   static const String baseURL = liveBaseURL;
-  static const String register = baseURL + "/register";
-  static const String login = baseURL + "/login";
-  static const String opt = baseURL + "/opt";
-  static const String forgotPassword = baseURL + "/forgot-password";
+  static const String register = baseURL + "/auth/register";
+  static const String login = baseURL + "/auth/login";
+  static const String opt = baseURL + "/auth/opt";
+  static const String forgotPassword = baseURL + "/auth/forgot-password";
 
 
 }

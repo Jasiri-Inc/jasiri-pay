@@ -51,8 +51,7 @@ class _SignFormState extends State<SignForm> {
           User user = response['user'];
           Provider.of<UserProvider>(context, listen: false).setUser(user);
           Navigator.pushNamed(context, OtpScreen.routeName);
-
-        }else{
+        } else {
           print('Login Failed');
         }
       });
@@ -98,7 +97,6 @@ class _SignFormState extends State<SignForm> {
                 _formKey.currentState.save();
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
-                // Navigator.pushNamed(context, OtpScreen.routeName);
                 doLogin();
               }
             },

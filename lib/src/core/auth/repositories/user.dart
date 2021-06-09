@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import '../../../constants/api_path.dart';
+import 'package:dio/dio.dart';
+
+import '../../../utils/services/rest_api_service.dart';
 import '../models/user.dart';
 
 enum Status {
@@ -28,30 +29,25 @@ class AuthProvider with ChangeNotifier {
       String email, String password, String deviceName) async {
     var result;
 
-    final Map<String, dynamic> loginData = {
-      'user': {'email': email, 'password': password, 'device_name': deviceName}
+    final Map<String, String> loginData = {
+      'email': email,
+      'password': password,
+      'device_name': deviceName
     };
 
     _loggedInStatus = Status.Authenticating;
     notifyListeners();
 
-    var loginUrl = Uri.parse(AppUrl.login);
-    Response response = await post(
-      loginUrl,
-      body: json.encode(loginData),
-      headers: {'Content-Type': 'application/json'},
-    );
+    var formData = FormData.fromMap(loginData);
 
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    var response = await dio.post('/auth/login', data: formData);
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
+    if (response.statusCode == 201) {
+      final Map<String, dynamic> responseData = response.data;
 
       var userData = responseData['data'];
 
       User authUser = User.fromJson(userData);
-      print(authUser);
 
       // UserPreferences().saveUser(authUser);
 
@@ -64,7 +60,7 @@ class AuthProvider with ChangeNotifier {
       notifyListeners();
       result = {
         'status': false,
-        'message': json.decode(response.body)['error']
+        'message': response.data['message']
       };
     }
     return result;
