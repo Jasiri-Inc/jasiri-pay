@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/core/profile/complete_profile_screen.dart';
 import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
 import 'package:lipa_rahaa/src/widgets/form_error.dart';
+
+import '../../../repositories/user.dart';
+import '../../../models/user.dart';
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -13,10 +17,14 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
+
+  String name;
   String email;
   String password;
   String confirmPassword;
+  String deviceName;
   bool remember = false;
+
   final List<String> errors = [];
 
   void addError({String error}) {
@@ -35,10 +43,28 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider auth = Provider.of<AuthProvider>(context);
+
+    var doRegister = () {
+      auth
+          .register(name, email, password, confirmPassword, 'iPhone')
+          .then((response) {
+        if (response['status']) {
+          User user = response['data'];
+          Provider.of<UserProvider>(context, listen: false).setUser(user);
+          Navigator.pushReplacementNamed(context, '/login_success');
+        } else {
+          print('Login Failed');
+        }
+      });
+    };
+
     return Form(
       key: _formKey,
       child: Column(
         children: [
+          buildNameFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
           buildEmailFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
@@ -47,12 +73,11 @@ class _SignUpFormState extends State<SignUpForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "Continue",
+            text: "Submit",
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                // if all are valid then go to success screen
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                doRegister();
               }
             },
           ),
@@ -156,6 +181,35 @@ class _SignUpFormState extends State<SignUpForm> {
         hintText: "Enter your email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+    );
+  }
+
+   TextFormField buildNameFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.name,
+      onSaved: (newValue) => name = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        } 
+        return null;
+      },
+      validator: (value) {
+        if (value.isEmpty) {
+          addError(error: kEmailNullError);
+          return "";
+        } 
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Name",
+        hintText: "Enter your name",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/person.svg"),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),

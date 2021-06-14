@@ -58,38 +58,57 @@ class AuthProvider with ChangeNotifier {
     } else {
       _loggedInStatus = Status.NotLoggedIn;
       notifyListeners();
-      result = {
-        'status': false,
-        'message': response.data['message']
-      };
+      result = {'status': false, 'message': response.data['message']};
     }
     return result;
   }
 
-  Future<Map<String, dynamic>> register(
-      String email, String password, String passwordConfirmation) async {
+  Future<Map<String, dynamic>> register(String name, String email,
+      String password, String passwordConfirmation, String deviceName) async {
+var result;
+
     final Map<String, dynamic> registrationData = {
-      'user': {
-        'email': email,
-        'password': password,
-        'password_confirmation': passwordConfirmation
-      }
+      'name': name,
+      'email': email,
+      'password': password,
+      'password_confirmation': passwordConfirmation,
+      'device_name': deviceName,
     };
 
     _registeredInStatus = Status.Registering;
     notifyListeners();
 
-    var registerUrl = Uri.parse(AppUrl.register);
-    return await post(registerUrl,
-            body: json.encode(registrationData),
-            headers: {'Content-Type': 'application/json'})
-        .then(onValue)
-        .catchError(onError);
+    var formData = FormData.fromMap(registrationData);
+
+    var response = await dio.post('/auth/register', data: formData);
+    print(response.data);
+
+    
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = response.data;
+      var userData = responseData['data'];
+
+      User authUser = User.fromJson(userData);
+
+      // UserPreferences().saveUser(authUser);
+      result = {
+        'status': true,
+        'message': 'Successfully registered',
+        'data': authUser
+      };
+    } else {
+      result = {
+        'status': false,
+        'message': 'Registration failed',
+        'data': response.data,
+      };
+    }
+    return result;
   }
 
   static Future<FutureOr> onValue(Response response) async {
     var result;
-    final Map<String, dynamic> responseData = json.decode(response.body);
+    final Map<String, dynamic> responseData = response.data;
 
     if (response.statusCode == 200) {
       var userData = responseData['data'];
