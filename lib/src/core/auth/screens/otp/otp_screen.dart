@@ -8,13 +8,16 @@ class OtpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("OTP Verification"),
-          ),
-          body: Body(),
-        ));
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: Scaffold(
+            appBar: AppBar(
+              title: Text("OTP Verification"),
+            ),
+            body: Body(),
+          )),
+    );
   }
 }
