@@ -26,13 +26,13 @@ class AuthProvider with ChangeNotifier {
   Status get registeredInStatus => _registeredInStatus;
 
   Future<Map<String, dynamic>> login(
-      String email, String password, String deviceName) async {
+      String email, String password, String deviceId) async {
     var result;
 
     final Map<String, String> loginData = {
       'email': email,
       'password': password,
-      'device_name': deviceName
+      'device_name': deviceId
     };
 
     _loggedInStatus = Status.Authenticating;
@@ -64,7 +64,7 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<Map<String, dynamic>> register(String name, String email,
-      String password, String passwordConfirmation, String deviceName) async {
+      String password, String passwordConfirmation, String deviceId) async {
 var result;
 
     final Map<String, dynamic> registrationData = {
@@ -72,7 +72,7 @@ var result;
       'email': email,
       'password': password,
       'password_confirmation': passwordConfirmation,
-      'device_name': deviceName,
+      'device_name': deviceId,
     };
 
     _registeredInStatus = Status.Registering;
