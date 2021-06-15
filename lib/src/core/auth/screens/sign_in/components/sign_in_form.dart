@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lipa_rahaa/src/config/size_config.dart';
 import 'package:lipa_rahaa/src/constants/constants.dart';
 import 'package:lipa_rahaa/src/core/auth/screens/forgot_password/forgot_password_screen.dart';
+import 'package:lipa_rahaa/src/utils/services/device_info.dart';
 import '../../otp/otp_screen.dart';
 import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
@@ -42,9 +43,16 @@ class _SignFormState extends State<SignForm> {
   Widget build(BuildContext context) {
     AuthProvider auth = Provider.of<AuthProvider>(context);
 
-    var doLogin = () {
+
+    var doLogin = () async {
+
+      Map<String, dynamic> deviceData =
+          await DeviceInfo().getPlatformDetails();
+
       final Future<Map<String, dynamic>> responseMessage =
-          auth.login(email, password, 'iPhone');
+          auth.login(email, password, deviceData['deviceId']);
+
+      
 
       responseMessage.then((response) {
         if (response['status']) {
@@ -98,7 +106,6 @@ class _SignFormState extends State<SignForm> {
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
                 doLogin();
-                
               }
             },
           ),

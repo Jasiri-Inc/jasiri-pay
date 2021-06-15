@@ -7,6 +7,7 @@ import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
 import 'package:lipa_rahaa/src/widgets/default_button.dart';
 import 'package:lipa_rahaa/src/widgets/form_error.dart';
 
+import '../../../../../utils/services/device_info.dart';
 import '../../../repositories/user.dart';
 import '../../../models/user.dart';
 
@@ -45,9 +46,14 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     AuthProvider auth = Provider.of<AuthProvider>(context);
 
-    var doRegister = () {
+    var doRegister = () async {
+
+Map<String, dynamic> deviceData =
+          await DeviceInfo().getPlatformDetails();
+
+
       auth
-          .register(name, email, password, confirmPassword, 'iPhone')
+          .register(name, email, password, confirmPassword, deviceData['deviceId'])
           .then((response) {
         if (response['status']) {
           User user = response['data'];
