@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
+import 'package:jasiri_pay/src/core/profile/complete_profile_screen.dart';
+import 'package:jasiri_pay/src/widgets/custom_surfix_icon.dart';
+import 'package:jasiri_pay/src/widgets/default_button.dart';
+import 'package:jasiri_pay/src/widgets/form_error.dart';
 import 'package:provider/provider.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/core/profile/complete_profile_screen.dart';
-import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
-import 'package:lipa_rahaa/src/widgets/default_button.dart';
-import 'package:lipa_rahaa/src/widgets/form_error.dart';
 
 import '../../../../../utils/services/device_info.dart';
-import '../../../repositories/user.dart';
 import '../../../models/user.dart';
+import '../../../repositories/user.dart';
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -19,23 +19,23 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
 
-  String name;
-  String email;
-  String password;
-  String confirmPassword;
-  String deviceName;
+  String? name;
+  String? email;
+  String? password;
+  String? confirmPassword;
+  String? deviceName;
   bool remember = false;
 
-  final List<String> errors = [];
+  final List<String?> errors = [];
 
-  void addError({String error}) {
+  void addError({String? error}) {
     if (!errors.contains(error))
       setState(() {
         errors.add(error);
       });
   }
 
-  void removeError({String error}) {
+  void removeError({String? error}) {
     if (errors.contains(error))
       setState(() {
         errors.remove(error);
@@ -47,16 +47,14 @@ class _SignUpFormState extends State<SignUpForm> {
     AuthProvider auth = Provider.of<AuthProvider>(context);
 
     var doRegister = () async {
-
-Map<String, dynamic> deviceData =
-          await DeviceInfo().getPlatformDetails();
-
+      Map<String, dynamic> deviceData = await DeviceInfo().getPlatformDetails();
 
       auth
-          .register(name, email, password, confirmPassword, deviceData['deviceId'])
+          .register(
+              name, email, password, confirmPassword, deviceData['deviceId'])
           .then((response) {
         if (response['status']) {
-          User user = response['data'];
+          User? user = response['data'];
           Provider.of<UserProvider>(context, listen: false).setUser(user);
           Navigator.pushReplacementNamed(context, '/login_success');
         } else {
@@ -81,8 +79,8 @@ Map<String, dynamic> deviceData =
           DefaultButton(
             text: "Submit",
             press: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
                 doRegister();
               }
             },
@@ -105,7 +103,7 @@ Map<String, dynamic> deviceData =
         confirmPassword = value;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
         } else if ((password != value)) {
@@ -139,7 +137,7 @@ Map<String, dynamic> deviceData =
         password = value;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
         } else if (value.length < 8) {
@@ -173,7 +171,7 @@ Map<String, dynamic> deviceData =
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
@@ -194,21 +192,21 @@ Map<String, dynamic> deviceData =
     );
   }
 
-   TextFormField buildNameFormField() {
+  TextFormField buildNameFormField() {
     return TextFormField(
       keyboardType: TextInputType.name,
       onSaved: (newValue) => name = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
-        } 
+        }
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kEmailNullError);
           return "";
-        } 
+        }
         return null;
       },
       decoration: InputDecoration(

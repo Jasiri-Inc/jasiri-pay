@@ -10,7 +10,7 @@ var options = BaseOptions(
     headers: {'Accept': "application/json"},
     followRedirects: false,
     validateStatus: (status) {
-      return status < 500;
+      return status! < 500;
     });
 
 Dio dio = Dio(options);

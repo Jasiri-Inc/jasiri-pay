@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/modules/details/screens/details_screen.dart';
+import 'package:jasiri_pay/src/modules/details/screens/details_screen.dart';
 
 import 'item_card.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

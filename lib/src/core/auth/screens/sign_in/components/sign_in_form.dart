@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/core/auth/screens/forgot_password/forgot_password_screen.dart';
-import 'package:lipa_rahaa/src/utils/services/device_info.dart';
-import '../../otp/otp_screen.dart';
-import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
-import 'package:lipa_rahaa/src/widgets/default_button.dart';
-import 'package:lipa_rahaa/src/widgets/form_error.dart';
-import 'package:lipa_rahaa/src/widgets/helper/keyboard.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
+import 'package:jasiri_pay/src/core/auth/screens/forgot_password/forgot_password_screen.dart';
+import 'package:jasiri_pay/src/utils/services/device_info.dart';
+import 'package:jasiri_pay/src/widgets/custom_surfix_icon.dart';
+import 'package:jasiri_pay/src/widgets/default_button.dart';
+import 'package:jasiri_pay/src/widgets/form_error.dart';
+import 'package:jasiri_pay/src/widgets/helper/keyboard.dart';
 import 'package:provider/provider.dart';
+
 import '../../../models/user.dart';
 import '../../../repositories/user.dart';
+import '../../otp/otp_screen.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -20,19 +21,19 @@ class SignForm extends StatefulWidget {
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
 
-  String email, password;
-  bool remember = false;
+  String? email, password;
+  bool? remember = false;
 
-  final List<String> errors = [];
+  final List<String?> errors = [];
 
-  void addError({String error}) {
+  void addError({String? error}) {
     if (!errors.contains(error))
       setState(() {
         errors.add(error);
       });
   }
 
-  void removeError({String error}) {
+  void removeError({String? error}) {
     if (errors.contains(error))
       setState(() {
         errors.remove(error);
@@ -43,20 +44,15 @@ class _SignFormState extends State<SignForm> {
   Widget build(BuildContext context) {
     AuthProvider auth = Provider.of<AuthProvider>(context);
 
-
     var doLogin = () async {
-
-      Map<String, dynamic> deviceData =
-          await DeviceInfo().getPlatformDetails();
+      Map<String, dynamic> deviceData = await DeviceInfo().getPlatformDetails();
 
       final Future<Map<String, dynamic>> responseMessage =
           auth.login(email, password, deviceData['deviceId']);
 
-      
-
       responseMessage.then((response) {
         if (response['status']) {
-          User user = response['user'];
+          User? user = response['user'];
           Provider.of<UserProvider>(context, listen: false).setUser(user);
           Navigator.pushNamed(context, OtpScreen.routeName);
         } else {
@@ -101,8 +97,8 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
             text: "Submit",
             press: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
                 doLogin();
@@ -127,7 +123,7 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
         } else if (value.length < 8) {
@@ -161,7 +157,7 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {

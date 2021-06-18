@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
 
 class OrderButton extends StatelessWidget {
   const OrderButton({
-    Key key,
-    @required this.size,
+    Key? key,
+    required this.size,
     this.press,
   }) : super(key: key);
 
   final Size size;
-  final Function press;
+  final Function? press;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class OrderButton extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: press,
+          onTap: press as void Function()?,
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Row(

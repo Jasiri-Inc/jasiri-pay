@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
-    Key key,
+    Key? key,
     this.text,
     this.image,
   }) : super(key: key);
-  final String text, image;
+  final String? text, image;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SplashContent extends StatelessWidget {
         Spacer(),
         RichText(
           text: TextSpan(
-            style: Theme.of(context).textTheme.headline6.copyWith(
+            style: Theme.of(context).textTheme.headline6!.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: getProportionateScreenWidth(36)),
             children: [
@@ -33,7 +33,7 @@ class SplashContent extends StatelessWidget {
           ),
         ),
         Text(
-          text,
+          text!,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: kSecondaryColor,
@@ -42,7 +42,7 @@ class SplashContent extends StatelessWidget {
         ),
         Spacer(flex: 2),
         Image.asset(
-          image,
+          image!,
           height: getProportionateScreenHeight(265),
           width: getProportionateScreenWidth(235),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
-import 'package:lipa_rahaa/src/modules/home/screens/home-screen.dart';
-import 'package:lipa_rahaa/src/widgets/default_button.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
+import 'package:jasiri_pay/src/modules/home/screens/home-screen.dart';
+import 'package:jasiri_pay/src/widgets/default_button.dart';
 
 class Body extends StatelessWidget {
   @override

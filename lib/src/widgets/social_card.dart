@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
 
 class SocialCard extends StatelessWidget {
   const SocialCard({
-    Key key,
+    Key? key,
     this.icon,
     this.press,
   }) : super(key: key);
 
-  final String icon;
-  final Function press;
+  final String? icon;
+  final Function? press;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: press,
+      onTap: press as void Function()?,
       child: Container(
         margin:
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
@@ -26,7 +26,7 @@ class SocialCard extends StatelessWidget {
           color: Color(0xFFF5F6F9),
           shape: BoxShape.circle,
         ),
-        child: SvgPicture.asset(icon),
+        child: SvgPicture.asset(icon!),
       ),
     );
   }

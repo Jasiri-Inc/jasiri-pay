@@ -13,14 +13,14 @@ class User {
     this.user,
   });
 
-  UserClass user;
+  UserClass? user;
 
   factory User.fromJson(Map<String, dynamic> responseData) => User(
         user: UserClass.fromJson(responseData["user"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "user": user.toJson(),
+        "user": user!.toJson(),
       };
 }
 
@@ -33,11 +33,11 @@ class UserClass {
     this.deviceName,
   });
 
-  int id;
-  String name;
-  String email;
-  String token;
-  String deviceName;
+  int? id;
+  String? name;
+  String? email;
+  String? token;
+  String? deviceName;
 
   factory UserClass.fromJson(Map<String, dynamic> responseData) => UserClass(
         id: responseData["id"],

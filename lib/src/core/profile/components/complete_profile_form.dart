@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/widgets/custom_surfix_icon.dart';
-import 'package:lipa_rahaa/src/widgets/default_button.dart';
-import 'package:lipa_rahaa/src/widgets/form_error.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
-
+import 'package:jasiri_pay/src/config/size_config.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
+import 'package:jasiri_pay/src/widgets/custom_surfix_icon.dart';
+import 'package:jasiri_pay/src/widgets/default_button.dart';
+import 'package:jasiri_pay/src/widgets/form_error.dart';
 
 class CompleteProfileForm extends StatefulWidget {
   @override
@@ -13,20 +12,20 @@ class CompleteProfileForm extends StatefulWidget {
 
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> errors = [];
-  String firstName;
-  String lastName;
-  String phoneNumber;
-  String address;
+  final List<String?> errors = [];
+  String? firstName;
+  String? lastName;
+  String? phoneNumber;
+  String? address;
 
-  void addError({String error}) {
+  void addError({String? error}) {
     if (!errors.contains(error))
       setState(() {
         errors.add(error);
       });
   }
 
-  void removeError({String error}) {
+  void removeError({String? error}) {
     if (errors.contains(error))
       setState(() {
         errors.remove(error);
@@ -51,7 +50,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           DefaultButton(
             text: "continue",
             press: () {
-              if (_formKey.currentState.validate()) {
+              if (_formKey.currentState!.validate()) {
                 // Navigator.pushNamed(context, OtpScreen.routeName);
               }
             },
@@ -71,7 +70,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kAddressNullError);
           return "";
         }
@@ -84,7 +83,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
-        CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
       ),
     );
   }
@@ -100,7 +99,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kPhoneNumberNullError);
           return "";
         }
@@ -141,7 +140,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           addError(error: kNameNullError);
           return "";
         }

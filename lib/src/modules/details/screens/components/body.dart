@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
+
 import 'item_image.dart';
 import 'order_button.dart';
 import 'title_price_rating.dart';
@@ -22,7 +23,7 @@ class Body extends StatelessWidget {
 
 class ItemInfo extends StatelessWidget {
   const ItemInfo({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -46,7 +47,7 @@ class ItemInfo extends StatelessWidget {
             numOfReviews: 24,
             rating: 4,
             price: 15,
-            onRatingChanged: (value) {},
+            // onRatingChanged: (value) {},
           ),
           Text(
             "Nowadays, making printed materials have become fast, easy and simple. If you want your promotional material to be an eye-catching object, you should make it colored. By way of using inkjet printer this is not hard to make. An inkjet printer is any printer that places extremely small droplets of ink onto paper to create an image.",
@@ -65,7 +66,7 @@ class ItemInfo extends StatelessWidget {
     );
   }
 
-  Row shopeName({String name}) {
+  Row shopeName({required String name}) {
     return Row(
       children: <Widget>[
         Icon(

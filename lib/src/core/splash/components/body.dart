@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/core/auth/screens/sign_in/sign_in_screen.dart';
-import 'package:lipa_rahaa/src/widgets/default_button.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
+import 'package:jasiri_pay/src/core/auth/screens/sign_in/sign_in_screen.dart';
+import 'package:jasiri_pay/src/widgets/default_button.dart';
 
 import 'splash_content.dart';
 
@@ -19,8 +19,7 @@ class _BodyState extends State<Body> {
       "image": "assets/images/splash_1.png"
     },
     {
-      "text":
-          "We help you accomplish \npayments 13x faster",
+      "text": "We help you accomplish \npayments 13x faster",
       "image": "assets/images/splash_2.png"
     },
     {
@@ -83,7 +82,7 @@ class _BodyState extends State<Body> {
     );
   }
 
-  AnimatedContainer buildDot({int index}) {
+  AnimatedContainer buildDot({int? index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,
       margin: EdgeInsets.only(right: 5),

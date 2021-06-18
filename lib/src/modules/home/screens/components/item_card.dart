@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
 
 class ItemCard extends StatelessWidget {
-  final String title, shopName, svgSrc;
-  final Function press;
+  final String? title, shopName, svgSrc;
+  final Function? press;
   const ItemCard({
-    Key key,
+    Key? key,
     this.title,
     this.shopName,
     this.svgSrc,
@@ -33,7 +33,7 @@ class ItemCard extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: press,
+          onTap: press as void Function()?,
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -46,15 +46,15 @@ class ItemCard extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: SvgPicture.asset(
-                    svgSrc,
+                    svgSrc!,
                     width: size.width * 0.18,
                     // size.width * 0.18 means it use 18% of total width
                   ),
                 ),
-                Text(title),
+                Text(title!),
                 SizedBox(height: 10),
                 Text(
-                  shopName,
+                  shopName!,
                   style: TextStyle(fontSize: 12),
                 ),
               ],

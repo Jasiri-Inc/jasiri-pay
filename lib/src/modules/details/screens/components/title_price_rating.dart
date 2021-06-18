@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
+// import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class TitlePriceRating extends StatelessWidget {
-  final int price, numOfReviews;
-  final double rating;
-  final String name;
-  final RatingChangeCallback onRatingChanged;
+  final int? price, numOfReviews;
+  final double? rating;
+  final String? name;
+  // final RatingChangeCallback onRatingChanged;
   const TitlePriceRating({
-    Key key,
+    Key? key,
     this.price,
     this.numOfReviews,
     this.rating,
     this.name,
-    this.onRatingChanged,
+    // this.onRatingChanged,
   }) : super(key: key);
 
   @override
@@ -27,17 +27,17 @@ class TitlePriceRating extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  name,
+                  name!,
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 SizedBox(height: 10),
                 Row(
                   children: <Widget>[
-                    SmoothStarRating(
-                      borderColor: kPrimaryColor,
-                      rating: rating,
-                      onRated: onRatingChanged,
-                    ),
+                    // SmoothStarRating(
+                    //   borderColor: kPrimaryColor,
+                    //   rating: rating,
+                    //   onRated: onRatingChanged,
+                    // ),
                     SizedBox(width: 10),
                     Text("$numOfReviews reviews"),
                   ],
@@ -51,7 +51,7 @@ class TitlePriceRating extends StatelessWidget {
     );
   }
 
-  ClipPath priceTag(BuildContext context, {int price}) {
+  ClipPath priceTag(BuildContext context, {int? price}) {
     return ClipPath(
       clipper: PricerCliper(),
       child: Container(
@@ -64,7 +64,7 @@ class TitlePriceRating extends StatelessWidget {
           "\$$price",
           style: Theme.of(context)
               .textTheme
-              .headline6
+              .headline6!
               .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),

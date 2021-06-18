@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
 
 AppBar homeAppBar(BuildContext context) {
   return AppBar(
@@ -14,7 +14,7 @@ AppBar homeAppBar(BuildContext context) {
       text: TextSpan(
         style: Theme.of(context)
             .textTheme
-            .headline6
+            .headline6!
             .copyWith(fontWeight: FontWeight.bold),
         children: [
           TextSpan(

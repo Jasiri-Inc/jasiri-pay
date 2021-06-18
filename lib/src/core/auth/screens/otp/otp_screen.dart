@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
 
 import 'components/body.dart';
 

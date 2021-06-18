@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/widgets/search_box.dart';
+import 'package:jasiri_pay/src/widgets/search_box.dart';
 
 import 'category_list.dart';
 import 'discount_card.dart';

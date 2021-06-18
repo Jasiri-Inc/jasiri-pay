@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ItemImage extends StatelessWidget {
-  final String imgSrc;
+  final String? imgSrc;
   const ItemImage({
-    Key key,
+    Key? key,
     this.imgSrc,
   }) : super(key: key);
 
@@ -11,7 +11,7 @@ class ItemImage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Image.asset(
-      imgSrc,
+      imgSrc!,
       height: size.height * 0.25,
       width: double.infinity,
       // it cover the 25% of total height

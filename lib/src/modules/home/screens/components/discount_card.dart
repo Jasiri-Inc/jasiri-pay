@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
 
 class DiscountCard extends StatelessWidget {
   const DiscountCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -63,8 +63,7 @@ class DiscountCard extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                              text:
-                                  "spend on meals cashless",
+                              text: "spend on meals cashless",
                               style: TextStyle(fontSize: 15),
                             ),
                           ],

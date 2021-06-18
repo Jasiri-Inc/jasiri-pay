@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lipa_rahaa">
+    package="com.example.jasiri_pay">
    <application
-        android:label="lipa_rahaa"
+        android:label="jasiri_pay"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

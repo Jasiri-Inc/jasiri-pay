@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
-import 'package:lipa_rahaa/src/constants/constants.dart';
-import 'package:lipa_rahaa/src/core/auth/screens/sign_up/sign_up_screen.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
+import 'package:jasiri_pay/src/constants/constants.dart';
+import 'package:jasiri_pay/src/core/auth/screens/sign_up/sign_up_screen.dart';
 
 class NoAccountText extends StatelessWidget {
   const NoAccountText({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

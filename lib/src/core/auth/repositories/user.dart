@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../../../utils/services/rest_api_service.dart';
 import '../models/user.dart';
@@ -26,10 +24,10 @@ class AuthProvider with ChangeNotifier {
   Status get registeredInStatus => _registeredInStatus;
 
   Future<Map<String, dynamic>> login(
-      String email, String password, String deviceId) async {
+      String? email, String? password, String? deviceId) async {
     var result;
 
-    final Map<String, String> loginData = {
+    final Map<String, String?> loginData = {
       'email': email,
       'password': password,
       'device_name': deviceId
@@ -63,9 +61,9 @@ class AuthProvider with ChangeNotifier {
     return result;
   }
 
-  Future<Map<String, dynamic>> register(String name, String email,
-      String password, String passwordConfirmation, String deviceId) async {
-var result;
+  Future<Map<String, dynamic>> register(String? name, String? email,
+      String? password, String? passwordConfirmation, String? deviceId) async {
+    var result;
 
     final Map<String, dynamic> registrationData = {
       'name': name,
@@ -83,7 +81,6 @@ var result;
     var response = await dio.post('/auth/register', data: formData);
     print(response.data);
 
-    
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = response.data;
       var userData = responseData['data'];
@@ -108,10 +105,10 @@ var result;
 
   static Future<FutureOr> onValue(Response response) async {
     var result;
-    final Map<String, dynamic> responseData = response.data;
+    final Map<String, dynamic>? responseData = response.data;
 
     if (response.statusCode == 200) {
-      var userData = responseData['data'];
+      var userData = responseData!['data'];
 
       User authUser = User.fromJson(userData);
 
@@ -139,11 +136,11 @@ var result;
 }
 
 class UserProvider with ChangeNotifier {
-  User _user = new User();
+  User? _user = new User();
 
-  User get user => _user;
+  User? get user => _user;
 
-  void setUser(User user) {
+  void setUser(User? user) {
     _user = user;
     notifyListeners();
   }
