@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/config/size_config.dart';
+import 'package:jasiri_pay/src/config/size_config.dart';
 
-const kPrimaryColor = Color(0xFFFFC61F);
+const kPrimaryColor = Color(0xFFFF7643);
 const kSecondaryColor = Color(0xFFB5BFD0);
 const kTextColor = Color(0xFF50505D);
 const kTextLightColor = Color(0xFF6A727D);
 
-
-
-// const kTextColor = Color(0xFF535353);
-// const kTextLightColor = Color(0xFFACACAC);
 const kDefaultPadding = 20.0;
-
-
-
 
 // const kSecondaryColor = Color(0xFF979797);
 // const kTextColor = Color(0xFF757575);
-// const kPrimaryColor = Color(0xFFFF7643);
 
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
@@ -39,7 +31,7 @@ const defaultDuration = Duration(milliseconds: 250);
 
 // Form Error
 final RegExp emailValidatorRegExp =
-RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 const String kEmailNullError = "Please Enter your email";
 const String kInvalidEmailError = "Please Enter Valid Email";
 const String kPassNullError = "Please Enter your password";
@@ -49,10 +41,9 @@ const String kNameNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
 
-
 final otpInputDecoration = InputDecoration(
   contentPadding:
-  EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
+      EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
   border: outlineInputBorder(),
   focusedBorder: outlineInputBorder(),
   enabledBorder: outlineInputBorder(),
@@ -64,10 +55,3 @@ OutlineInputBorder outlineInputBorder() {
     borderSide: BorderSide(color: kTextColor),
   );
 }
-
-
-
-
-
-
-

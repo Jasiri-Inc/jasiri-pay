@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lipa_rahaa/src/widgets/bottom_nav_bar.dart';
-import 'package:lipa_rahaa/src/constants/enums.dart';
+import 'package:jasiri_pay/src/constants/enums.dart';
+import 'package:jasiri_pay/src/widgets/bottom_nav_bar.dart';
 
 import 'components/body.dart';
 
@@ -10,10 +10,11 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: Text("Profile"),
-      ),
+          // title: Text("Profile"),
+          ),
       body: Body(),
-      bottomNavigationBar: CustomBottomNavigationBar(selectedMenu: MenuState.profile),
+      bottomNavigationBar:
+          CustomBottomNavigationBar(selectedMenu: MenuState.profile),
     );
   }
 }
